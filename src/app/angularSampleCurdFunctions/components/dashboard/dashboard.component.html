@@ -8,7 +8,6 @@
                 <th>Published at</th>
                 <th>Description</th>
                 <th>An image</th>
-                <th>Url</th>
             </tr>
         </thead>
         <tbody>
@@ -16,15 +15,12 @@
                 <td>{{article.source.name}}</td>
                 <td>{{article.title}}</td>
                 <td>{{article.publishedAt | date:'medium'}}</td>
-                <td>{{article.description}}</td>
-               
+                <td>
+                    <a *ngIf="article.description" target="_blank" href="{{article.url}}">{{article.description}}</a>
+                    <span *ngIf="!article.description">{{article.description}}</span></td>
                 <td>
                     <img *ngIf="article.urlToImage" class="img-responsive" src="{{article.urlToImage}}" alt="{{article.author}}">
                     <span *ngIf="!article.urlToImage"></span>
-                </td>
-                <td>
-                    <a *ngIf="article.url" target="_blank" href="{{article.url}}">{{article.url}}</a>
-                    <span *ngIf="!article.url">{{article.url}}</span>
                 </td>
             </tr>
         </tbody>
