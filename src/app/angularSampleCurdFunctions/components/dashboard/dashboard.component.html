@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>Articles</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Source name</th>
+                <th>Title</th>
+                <th>Published at</th>
+                <th>Description</th>
+                <th>An image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let article of articles ;trackBy: trackByFn">
+                <td>{{article.source.name}}</td>
+                <td>{{article.title}}</td>
+                <td>{{article.publishedAt | date:'medium'}}</td>
+                <td>
+                    <a *ngIf="article.description" target="_blank" href="{{article.url}}">{{article.description}}</a>
+                    <span *ngIf="!article.description">{{article.description}}</span></td>
+                <td>
+                    <img *ngIf="article.urlToImage" class="img-responsive" src="{{article.urlToImage}}" alt="{{article.author}}">
+                    <span *ngIf="!article.urlToImage"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
